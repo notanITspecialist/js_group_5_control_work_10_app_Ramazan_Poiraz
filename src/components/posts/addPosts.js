@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {addComment} from "../../actions/postActions";
 import FormGroup from "reactstrap/lib/FormGroup";
 import Label from "reactstrap/lib/Label";
 import Input from "reactstrap/lib/Input";
@@ -21,18 +20,11 @@ const AddPosts = props => {
       Object.keys(initialForm).forEach(e => {
           data.append(e, newPost[e])
       });
-      console.log(data);
 
       addNewPost(data)
     };
 
-    const changeForm = e => {
-        if(e.target.file){
-            setNewPost({...newPost, image: e.target.file})
-        }
-        console.log(newPost);
-      setNewPost({...newPost, [e.target.name]: e.target.value})
-    };
+    const changeForm = e => setNewPost({...newPost, [e.target.name]: e.target.value})
 
     const changeFileForm = e => {
         setNewPost({...newPost, [e.target.name]: e.target.files[0]})
@@ -40,22 +32,23 @@ const AddPosts = props => {
 
     return (
         <div>
+            <button onClick={() => props.history.push('/')}>Posts</button>
             <Form onSubmit={async e => {
                 e.preventDefault();
                 await addNewPostClick();
-                props.history.push('/')
+                setTimeout(() => props.history.push('/'), 10)
             }}>
                 <FormGroup>
                     <Label for="exampleEmail">Name</Label>
                     <Input onChange={changeForm} type="text" name="title" id="exampleEmail" placeholder="Namer" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="examplePassword">Password</Label>
+                    <Label for="examplePassword">Content</Label>
                     <Input required onChange={changeForm} type="text" name="content" id="examplePassword" placeholder="Comment" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="examplePassword">Password</Label>
-                    <Input required onChange={changeFileForm} type="file" name="image" id="examplePassword" placeholder="Comment" />
+                    <Label for="examplePassword">File</Label>
+                    <Input onChange={changeFileForm} type="file" name="image" id="examplePassword" placeholder="Comment" />
                 </FormGroup>
                 <button>Add</button>
             </Form>

@@ -6,7 +6,6 @@ const initialState = {
 
 const postsReducer = ( state = initialState, action ) => {
 if(action.type === GET_POSTS_RES){
-    console.log(action.data);
     return {...state, posts: action.data}
 }
 

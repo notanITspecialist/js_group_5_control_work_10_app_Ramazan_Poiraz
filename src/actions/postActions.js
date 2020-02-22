@@ -15,6 +15,5 @@ export const deleteComment = async id => {
 };
 
 export const addComment = async data => {
-  console.log(data)
   await axios.post('http://localhost:8000/comments', data)
 };

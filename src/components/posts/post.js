@@ -43,6 +43,7 @@ const Post = props => {
             <h1>{props.post.title}</h1>
             <span>{props.post.date}</span>
             <p>{props.post.content}</p>
+            {props.post.image && <img className='img-thumbnail' src={'http://localhost:8000/uploads/' + props.post.image} style={{width: '100%', maxWidth: '400px'}}/>}
 
             <ListGroupItem>
                 <Form onSubmit={e => {
@@ -55,7 +56,7 @@ const Post = props => {
                         <Input onChange={changeForm} type="text" name="author" id="exampleEmail" placeholder="Namer" />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="examplePassword">Password</Label>
+                        <Label for="examplePassword">Comment</Label>
                         <Input required onChange={changeForm} type="text" name="comment" id="examplePassword" placeholder="Comment" />
                     </FormGroup>
                     <button>Add</button>
