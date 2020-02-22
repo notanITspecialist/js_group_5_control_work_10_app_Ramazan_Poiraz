@@ -1,0 +1,1 @@
+export const GET_POST_RES = 'GET_POST_RES';
