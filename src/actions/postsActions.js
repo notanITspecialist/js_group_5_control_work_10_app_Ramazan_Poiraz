@@ -18,3 +18,12 @@ export const getPosts = () => async dispatch => {
     }
 };
 
+export const addNewPost = async data => {
+    await axios.post('http://localhost:8000/news', data)
+};
+
+export const deletePost = async id => {
+    await axios.delete('http://localhost:8000/news/'+id)
+}
+
+

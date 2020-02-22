@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {getPosts} from "../../actions/postsActions";
+import {deletePost, getPosts} from "../../actions/postsActions";
 import {ListGroup, ListGroupItem} from "reactstrap";
 
 const Posts = props => {
@@ -22,14 +22,21 @@ const Posts = props => {
             <h3 className='d-inline'>{e.title}</h3>
             <span className='d-block'>{e.date}</span>
             <button className='mt-3' onClick={() => moreInfo(e.id)}>Read full post</button>
-            <button className='float-right'>Delete</button>
+            <button onClick={el => {
+                el.preventDefault();
+                deletePost(e.id);
+                addPosts()
+            }} className='float-right'>Delete</button>
         </ListGroupItem>
     ));
 
     return (
-        <ListGroup>
-            {posts}
-        </ListGroup>
+        <>
+            <button onClick={() => props.history.push('/news/add')}>ADD POST</button>
+            <ListGroup>
+                {posts}
+            </ListGroup>
+        </>
     );
 };
 
