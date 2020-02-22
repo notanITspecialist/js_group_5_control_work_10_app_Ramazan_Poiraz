@@ -24,7 +24,7 @@ const AddPosts = props => {
       addNewPost(data)
     };
 
-    const changeForm = e => setNewPost({...newPost, [e.target.name]: e.target.value})
+    const changeForm = e => setNewPost({...newPost, [e.target.name]: e.target.value});
 
     const changeFileForm = e => {
         setNewPost({...newPost, [e.target.name]: e.target.files[0]})
