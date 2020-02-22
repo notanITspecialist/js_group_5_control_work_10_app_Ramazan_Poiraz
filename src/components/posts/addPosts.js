@@ -35,16 +35,16 @@ const AddPosts = props => {
             <button onClick={() => props.history.push('/')}>Posts</button>
             <Form onSubmit={async e => {
                 e.preventDefault();
-                await addNewPostClick();
+                addNewPostClick();
                 setTimeout(() => props.history.push('/'), 10)
             }}>
                 <FormGroup>
                     <Label for="exampleEmail">Name</Label>
-                    <Input onChange={changeForm} type="text" name="title" id="exampleEmail" placeholder="Namer" />
+                    <Input required onChange={changeForm} type="text" name="title" id="exampleEmail" placeholder="Name" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="examplePassword">Content</Label>
-                    <Input required onChange={changeForm} type="text" name="content" id="examplePassword" placeholder="Comment" />
+                    <Input required onChange={changeForm} type="text" name="content" id="examplePassword" placeholder="Content" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="examplePassword">File</Label>
